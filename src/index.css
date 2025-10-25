@@ -8,59 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Modern green architectural palette */
-    --background: 120 15% 97%;
-    --foreground: 140 25% 15%;
+    /* SIMA logo inspired palette */
+    --background: 240 15% 97%;
+    --foreground: 240 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 140 25% 15%;
+    --card-foreground: 240 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 140 25% 15%;
+    --popover-foreground: 240 25% 15%;
 
-    /* Deep forest green primary */
-    --primary: 140 60% 25%;
-    --primary-foreground: 120 15% 97%;
+    /* Deep blue primary from logo */
+    --primary: 237 35% 47%;
+    --primary-foreground: 240 15% 97%;
 
-    /* Light green secondary */
-    --secondary: 120 25% 90%;
-    --secondary-foreground: 140 25% 15%;
+    /* Light purple secondary from logo */
+    --secondary: 250 35% 85%;
+    --secondary-foreground: 240 25% 15%;
 
-    --muted: 120 15% 92%;
-    --muted-foreground: 140 20% 45%;
+    --muted: 240 15% 92%;
+    --muted-foreground: 240 20% 45%;
 
-    /* Vibrant emerald accent */
-    --accent: 160 75% 40%;
-    --accent-foreground: 0 0% 100%;
+    /* Purple accent from logo */
+    --accent: 250 45% 75%;
+    --accent-foreground: 240 25% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 120 15% 97%;
+    --destructive-foreground: 240 15% 97%;
 
-    --border: 120 20% 88%;
-    --input: 120 20% 88%;
-    --ring: 160 75% 40%;
+    --border: 240 20% 88%;
+    --input: 240 20% 88%;
+    --ring: 250 45% 75%;
 
     --radius: 1rem;
 
-    /* Custom green tokens */
-    --sage: 120 25% 75%;
-    --sage-dark: 120 30% 60%;
-    --emerald: 160 75% 40%;
-    --emerald-light: 160 70% 50%;
-    --forest: 140 60% 25%;
-    --forest-dark: 140 65% 18%;
-    --mint: 150 40% 85%;
+    /* Custom SIMA tokens */
+    --sima-blue: 237 35% 47%;
+    --sima-blue-dark: 237 40% 35%;
+    --sima-purple: 250 45% 75%;
+    --sima-purple-light: 250 50% 85%;
+    --sima-navy: 237 45% 30%;
+    --sima-navy-dark: 237 50% 20%;
+    --sima-lavender: 250 35% 90%;
 
     /* Enhanced gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(140 60% 25%) 0%, hsl(160 75% 40%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(160 75% 40%) 0%, hsl(160 70% 50%) 100%);
-    --gradient-sage: linear-gradient(180deg, hsl(120 25% 90%) 0%, hsl(120 15% 97%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(140 60% 25%) 0%, hsl(150 70% 35%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(237 35% 47%) 0%, hsl(250 45% 75%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(250 45% 75%) 0%, hsl(250 50% 85%) 100%);
+    --gradient-sage: linear-gradient(180deg, hsl(250 35% 85%) 0%, hsl(240 15% 97%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(237 35% 47%) 0%, hsl(250 45% 75%) 100%);
 
     /* Enhanced shadows */
-    --shadow-elegant: 0 20px 60px -15px hsl(140 60% 25% / 0.25);
-    --shadow-accent: 0 15px 40px -10px hsl(160 75% 40% / 0.35);
-    --shadow-glow: 0 0 30px hsl(160 75% 40% / 0.2);
+    --shadow-elegant: 0 20px 60px -15px hsl(237 35% 47% / 0.25);
+    --shadow-accent: 0 15px 40px -10px hsl(250 45% 75% / 0.35);
+    --shadow-glow: 0 0 30px hsl(250 45% 75% / 0.2);
     
     /* Enhanced animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,19 +106,19 @@ All colors MUST be HSL.
     --input: 210 15% 22%;
     --ring: 45 85% 55%;
 
-    --sage: 120 20% 30%;
-    --sage-dark: 120 25% 20%;
-    --emerald: 160 75% 40%;
-    --emerald-light: 160 70% 50%;
-    --forest: 140 55% 30%;
-    --forest-dark: 140 60% 22%;
+    --sima-blue: 237 35% 47%;
+    --sima-blue-dark: 237 40% 35%;
+    --sima-purple: 250 45% 75%;
+    --sima-purple-light: 250 50% 85%;
+    --sima-navy: 237 45% 30%;
+    --sima-navy-dark: 237 50% 20%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(140 25% 12%) 0%, hsl(140 30% 16%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(160 75% 40%) 0%, hsl(160 70% 50%) 100%);
-    --gradient-sage: linear-gradient(180deg, hsl(120 15% 22%) 0%, hsl(140 25% 12%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(237 25% 12%) 0%, hsl(237 30% 16%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(250 45% 75%) 0%, hsl(250 50% 85%) 100%);
+    --gradient-sage: linear-gradient(180deg, hsl(240 15% 22%) 0%, hsl(237 25% 12%) 100%);
 
     --shadow-elegant: 0 20px 60px -15px hsl(0 0% 0% / 0.6);
-    --shadow-accent: 0 15px 40px -10px hsl(160 75% 40% / 0.5);
+    --shadow-accent: 0 15px 40px -10px hsl(250 45% 75% / 0.5);
 
     --sidebar-background: 210 20% 12%;
     --sidebar-foreground: 35 30% 90%;

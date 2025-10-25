@@ -14,9 +14,8 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="p-2 bg-gradient-to-br from-primary to-forest rounded-xl group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 relative">
-              <Layers className="h-6 w-6 text-primary-foreground" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse" />
+            <div className="p-3 bg-white rounded-xl group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
+              <img src="/logo.svg" alt="SIMA Logo" className="h-12 w-12" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent text-gradient-fallback">
               {t("brand.name")}
