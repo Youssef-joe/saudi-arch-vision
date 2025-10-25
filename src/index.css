@@ -208,10 +208,11 @@ All colors MUST be HSL.
 
   /* Arabic font optimization */
   [dir="rtl"] {
-    font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+    font-family: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
     line-height: 1.8;
     letter-spacing: 0.02em;
     word-spacing: 0.1em;
+    font-feature-settings: 'liga' 1, 'kern' 1;
   }
 
   /* Enhanced Arabic typography */
@@ -221,13 +222,30 @@ All colors MUST be HSL.
   [dir="rtl"] h4,
   [dir="rtl"] h5,
   [dir="rtl"] h6 {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
     line-height: 1.6;
     word-spacing: 0.15em;
+    font-weight: 600;
   }
 
   [dir="rtl"] p {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
     line-height: 1.9;
     word-spacing: 0.12em;
+    font-weight: 400;
+  }
+
+  /* Better Arabic text rendering */
+  [dir="rtl"] .text-sm {
+    font-size: 0.9rem;
+  }
+
+  [dir="rtl"] .font-bold {
+    font-weight: 700;
+  }
+
+  [dir="rtl"] .font-semibold {
+    font-weight: 600;
   }
 
   /* Fix gradient text visibility for Arabic */
