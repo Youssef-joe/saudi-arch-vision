@@ -3,37 +3,42 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MessageSquare, X, Send } from "lucide-react";
-
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
+import { MessageSquare, X, Send, Loader2 } from "lucide-react";
+import { sendMessageToGemini, type ChatMessage } from "@/services/gemini";
 
 export const ChatBot = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useState<ChatMessage[]>([
     { role: "assistant", content: t("chatbot.greeting") },
   ]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { role: "user", content: input };
+    const userMessage: ChatMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponse: Message = {
+    try {
+      const response = await sendMessageToGemini(input, messages);
+      const aiResponse: ChatMessage = {
         role: "assistant",
-        content: "Thank you for your question. I'm analyzing your architectural query and will provide detailed guidance based on Saudi Architectural Design Guidelines.",
+        content: response,
       };
       setMessages((prev) => [...prev, aiResponse]);
-    }, 1000);
-
-    setInput("");
+    } catch (error) {
+      const errorResponse: ChatMessage = {
+        role: "assistant",
+        content: "I apologize, but I'm having trouble connecting right now. Please try again in a moment.",
+      };
+      setMessages((prev) => [...prev, errorResponse]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -94,16 +99,22 @@ export const ChatBot = () => {
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && handleSend()}
+                onKeyPress={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
                 placeholder={t("chatbot.placeholder")}
                 className="flex-1"
+                disabled={isLoading}
               />
               <Button
                 onClick={handleSend}
                 size="icon"
-                className="bg-gradient-to-r from-accent to-teal-light"
+                className="bg-gradient-to-r from-accent to-emerald-light"
+                disabled={isLoading || !input.trim()}
               >
-                <Send className="h-4 w-4" />
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Send className="h-4 w-4" />
+                )}
               </Button>
             </div>
           </div>

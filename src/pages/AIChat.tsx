@@ -4,22 +4,19 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
-import { Send, FileText, Sparkles } from "lucide-react";
-
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
+import { Send, FileText, Sparkles, Loader2 } from "lucide-react";
+import { sendMessageToGemini, type ChatMessage } from "@/services/gemini";
 
 const AIChat = () => {
   const { t } = useTranslation();
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
       content: t("chatbot.greeting"),
     },
   ]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const suggestions = [
     t("aiChat.suggestions.ventilation"),
@@ -28,22 +25,30 @@ const AIChat = () => {
     t("aiChat.suggestions.compliance"),
   ];
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { role: "user", content: input };
+    const userMessage: ChatMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
 
-    setTimeout(() => {
-      const aiResponse: Message = {
+    try {
+      const response = await sendMessageToGemini(input, messages);
+      const aiResponse: ChatMessage = {
         role: "assistant",
-        content:
-          "Based on the Saudi Architectural Design Guidelines, I can help you with that. Here are the key points to consider...",
+        content: response,
       };
       setMessages((prev) => [...prev, aiResponse]);
-    }, 1000);
-
-    setInput("");
+    } catch (error) {
+      const errorResponse: ChatMessage = {
+        role: "assistant",
+        content: "I apologize, but I'm having trouble connecting right now. Please try again in a moment.",
+      };
+      setMessages((prev) => [...prev, errorResponse]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -92,15 +97,21 @@ const AIChat = () => {
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    onKeyPress={(e) => e.key === "Enter" && handleSend()}
+                    onKeyPress={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
                     placeholder={t("chatbot.placeholder")}
                     className="flex-1"
+                    disabled={isLoading}
                   />
                   <Button
                     onClick={handleSend}
-                    className="bg-gradient-to-r from-accent to-teal-light"
+                    className="bg-gradient-to-r from-accent to-emerald-light"
+                    disabled={isLoading || !input.trim()}
                   >
-                    <Send className="h-4 w-4 mr-2" />
+                    {isLoading ? (
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    ) : (
+                      <Send className="h-4 w-4 mr-2" />
+                    )}
                     {t("chatbot.send")}
                   </Button>
                 </div>
