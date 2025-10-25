@@ -103,7 +103,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-slide-up" style={{animationDelay: '0.4s'}}>
               <Button
                 size="lg"
-                className="btn-gradient text-white text-lg px-8 py-4 rounded-xl font-semibold shadow-accent animate-glow"
+                className="bg-gradient-to-r from-primary to-sima-purple text-white text-lg px-8 py-4 rounded-xl font-semibold shadow-accent animate-glow hover:shadow-glow transition-all duration-300"
                 onClick={() => navigate("/upload")}
               >
                 <Upload className="mr-2 h-5 w-5" />
@@ -112,7 +112,7 @@ const Home = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-accent text-accent hover:bg-accent/10 text-lg px-8 py-4 rounded-xl font-semibold glass hover:shadow-accent transition-all duration-300"
+                className="border-2 border-primary text-primary hover:bg-primary/10 text-lg px-8 py-4 rounded-xl font-semibold glass hover:shadow-accent transition-all duration-300"
                 onClick={() => navigate("/dashboard")}
               >
                 {t("home.viewDashboard")}
@@ -121,11 +121,11 @@ const Home = () => {
 
             <div className="flex items-center justify-center gap-8 pt-8 text-sm animate-slide-up" style={{animationDelay: '0.6s'}}>
               <div className="flex items-center gap-2 glass px-4 py-2 rounded-full">
-                <Shield className="h-5 w-5 text-accent" />
+                <Shield className="h-5 w-5 text-primary" />
                 <span className="text-muted-foreground font-medium">{t("home.saudiCompliant")}</span>
               </div>
               <div className="flex items-center gap-2 glass px-4 py-2 rounded-full">
-                <Zap className="h-5 w-5 text-accent" />
+                <Zap className="h-5 w-5 text-primary" />
                 <span className="text-muted-foreground font-medium">{t("home.aiPowered")}</span>
               </div>
             </div>
@@ -139,7 +139,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4 relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent text-gradient-fallback">
+              <span className="bg-gradient-to-r from-primary to-sima-navy bg-clip-text text-transparent text-gradient-fallback">
                 {t("home.featuresTitle")}
               </span>
             </h2>
@@ -155,8 +155,8 @@ const Home = () => {
                 className="p-8 card-hover glass border-0 shadow-lg group animate-in fade-in slide-in-from-bottom backdrop-blur-sm"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="p-4 bg-gradient-to-br from-accent/20 to-emerald/20 rounded-xl w-fit mb-6 group-hover:shadow-glow transition-all duration-500 group-hover:scale-110">
-                  <feature.icon className="h-8 w-8 text-accent" />
+                <div className="p-4 bg-gradient-to-br from-accent/20 to-sima-purple/20 rounded-xl w-fit mb-6 group-hover:shadow-glow transition-all duration-500 group-hover:scale-110">
+                  <feature.icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
@@ -171,7 +171,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent text-gradient-fallback">
+              <span className="bg-gradient-to-r from-primary to-sima-navy bg-clip-text text-transparent text-gradient-fallback">
                 {t("home.howItWorksTitle")}
               </span>
             </h2>
@@ -188,11 +188,11 @@ const Home = () => {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="relative">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent to-emerald-light rounded-2xl flex items-center justify-center shadow-glow group-hover:scale-110 transition-all duration-500 animate-glow">
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-sima-purple rounded-2xl flex items-center justify-center shadow-glow group-hover:scale-110 transition-all duration-500 animate-glow">
                     <span className="text-3xl font-bold text-white">{step.number}</span>
                   </div>
                   {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-12 left-[60%] w-full h-1 bg-gradient-to-r from-accent/60 to-emerald/30 rounded-full" />
+                    <div className="hidden lg:block absolute top-12 left-[60%] w-full h-1 bg-gradient-to-r from-primary/60 to-sima-purple/30 rounded-full" />
                   )}
                 </div>
                 <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
@@ -204,11 +204,11 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary via-forest to-accent text-primary-foreground relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-primary via-sima-navy to-sima-purple text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="w-full h-full" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}} />
         </div>
-        <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-r from-emerald/20 to-accent/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-r from-sima-purple/20 to-accent/10 rounded-full blur-3xl animate-float" />
         <div className="container mx-auto px-4 text-center space-y-10 relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold leading-tight">
             {t("home.ctaTitle")}

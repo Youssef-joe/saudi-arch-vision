@@ -17,7 +17,7 @@ export const Navbar = () => {
             <div className="p-3 bg-white rounded-xl group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
               <img src="/logo.svg" alt="SIMA Logo" className="h-12 w-12" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent text-gradient-fallback">
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-sima-navy bg-clip-text text-transparent text-gradient-fallback">
               {t("brand.name")}
             </span>
           </Link>
@@ -49,7 +49,7 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher />
             <Button variant="ghost">{t("nav.signIn")}</Button>
-            <Button className="btn-gradient text-white font-semibold px-6 rounded-xl">
+            <Button className="bg-gradient-to-r from-primary to-sima-purple text-white font-semibold px-6 rounded-xl hover:shadow-accent transition-all duration-300">
               {t("nav.getStarted")}
             </Button>
           </div>
@@ -88,7 +88,7 @@ export const Navbar = () => {
             <div className="flex flex-col gap-2 pt-2 border-t">
               <LanguageSwitcher />
               <Button variant="ghost" className="w-full">{t("nav.signIn")}</Button>
-              <Button className="w-full btn-gradient text-white font-semibold rounded-xl">
+              <Button className="w-full bg-gradient-to-r from-primary to-sima-purple text-white font-semibold rounded-xl hover:shadow-accent transition-all duration-300">
                 {t("nav.getStarted")}
               </Button>
             </div>

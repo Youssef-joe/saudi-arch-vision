@@ -58,7 +58,7 @@ export const ChatBot = () => {
       {isOpen && (
         <Card className="fixed bottom-6 right-6 w-96 h-[500px] shadow-elegant z-50 flex flex-col animate-in slide-in-from-bottom">
           {/* Header */}
-          <div className="p-4 border-b bg-gradient-to-r from-primary to-deepBlue text-primary-foreground rounded-t-lg flex items-center justify-between">
+          <div className="p-4 border-b bg-gradient-to-r from-primary to-sima-navy text-primary-foreground rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-2">
               <MessageSquare className="h-5 w-5" />
               <h3 className="font-semibold">{t("chatbot.title")}</h3>
@@ -107,7 +107,7 @@ export const ChatBot = () => {
               <Button
                 onClick={handleSend}
                 size="icon"
-                className="bg-gradient-to-r from-accent to-emerald-light"
+                className="bg-gradient-to-r from-primary to-sima-purple"
                 disabled={isLoading || !input.trim()}
               >
                 {isLoading ? (
