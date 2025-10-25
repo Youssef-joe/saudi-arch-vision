@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "home": "Home",
+    "upload": "Upload & Analyze",
+    "dashboard": "Dashboard",
+    "viewer3d": "3D Viewer",
+    "chat": "AI Chat",
+    "certificates": "Certificates",
+    "admin": "Admin",
+    "signIn": "Sign In",
+    "getStarted": "Get Started"
+  },
+  "home": {
+    "badge": "AI-Powered Architecture Review",
+    "title1": "Transform Architectural",
+    "title2": "Review & Certification",
+    "description": "Upload your architectural plans and get instant AI-powered analysis, compliance verification, and performance simulation aligned with Saudi Architectural Design Guidelines.",
+    "startAnalysis": "Start Analysis",
+    "viewDashboard": "View Dashboard",
+    "saudiCompliant": "Saudi Compliant",
+    "aiPowered": "AI-Powered",
+    "featuresTitle": "Comprehensive Features",
+    "featuresSubtitle": "Everything you need for modern architectural review and certification",
+    "howItWorksTitle": "How It Works",
+    "howItWorksSubtitle": "Simple, efficient workflow from upload to certification",
+    "ctaTitle": "Ready to Transform Your Workflow?",
+    "ctaDescription": "Join architects and design offices using AI to accelerate review and ensure compliance",
+    "startFreeAnalysis": "Start Free Analysis",
+    "footer": "© 2025 ArchReview AI. Empowering sustainable architecture in Saudi Arabia."
+  },
+  "features": {
+    "smartUpload": {
+      "title": "Smart Upload",
+      "description": "Accept all drawing formats: DWG, DXF, PDF, IFC, RVT and more"
+    },
+    "aiAnalysis": {
+      "title": "AI Analysis",
+      "description": "Automated compliance check against Saudi Architectural Guidelines"
+    },
+    "3dVisualization": {
+      "title": "3D Visualization",
+      "description": "Convert 2D plans into interactive 3D models instantly"
+    },
+    "aiAssistant": {
+      "title": "AI Assistant",
+      "description": "Get instant answers about design issues and recommendations"
+    },
+    "certification": {
+      "title": "Certification",
+      "description": "Digital certificates with QR code verification"
+    },
+    "performanceMonitoring": {
+      "title": "Performance Monitoring",
+      "description": "10-year building simulation with real-time IoT integration"
+    }
+  },
+  "steps": {
+    "step1": {
+      "title": "Upload Your Plans",
+      "description": "Simply drag and drop your architectural drawings in any format"
+    },
+    "step2": {
+      "title": "AI Analysis",
+      "description": "Our AI analyzes compliance, performance, and design quality"
+    },
+    "step3": {
+      "title": "Review & Improve",
+      "description": "Get actionable recommendations and visualize improvements"
+    },
+    "step4": {
+      "title": "Get Certified",
+      "description": "Receive compliance certification with QR verification"
+    }
+  },
+  "upload": {
+    "title": "Upload & Analyze",
+    "subtitle": "Upload your architectural drawings for instant AI-powered analysis",
+    "dropHere": "Drop your architectural plans here",
+    "orBrowse": "or click to browse files",
+    "browseFiles": "Browse Files",
+    "startAnalysis": "Start Analysis",
+    "analyzing": "Analyzing...",
+    "uploadDifferent": "Upload Different File",
+    "instantAnalysis": "Instant Analysis",
+    "instantDesc": "AI-powered review in seconds",
+    "saudiCompliance": "Saudi Compliance",
+    "saudiDesc": "Verified against official guidelines",
+    "actionableInsights": "Actionable Insights",
+    "actionableDesc": "Clear recommendations for improvement"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Manage your projects and track performance",
+    "newProject": "New Project",
+    "totalProjects": "Total Projects",
+    "approved": "Approved",
+    "underReview": "Under Review",
+    "needsRevision": "Needs Revision",
+    "recentProjects": "Recent Projects",
+    "viewAll": "View All",
+    "compliance": "Compliance",
+    "complianceTrend": "Compliance Trend",
+    "certifications": "Certifications",
+    "totalIssued": "Total Issued",
+    "thisMonth": "This Month",
+    "viewAllCertificates": "View All Certificates"
+  },
+  "chatbot": {
+    "title": "AI Assistant",
+    "placeholder": "Ask me about architectural guidelines, compliance, or design recommendations...",
+    "send": "Send",
+    "greeting": "Hello! I'm your AI architectural assistant. How can I help you today?"
+  }
+}

@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import {
   FileCheck,
   Clock,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const stats = [
     {
       icon: FileCheck,
@@ -73,16 +75,16 @@ const Dashboard = () => {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold">
                 <span className="bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-                  Dashboard
+                  {t("dashboard.title")}
                 </span>
               </h1>
               <p className="text-muted-foreground mt-2">
-                Manage your projects and track performance
+                {t("dashboard.subtitle")}
               </p>
             </div>
-            <Button className="bg-gradient-to-r from-accent to-gold-light hover:shadow-gold transition-all duration-300">
+            <Button className="bg-gradient-to-r from-accent to-teal-light hover:shadow-accent transition-all duration-300">
               <FileCheck className="mr-2 h-4 w-4" />
-              New Project
+              {t("dashboard.newProject")}
             </Button>
           </div>
 

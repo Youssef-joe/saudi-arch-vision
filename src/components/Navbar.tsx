@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Building2, Menu } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -21,20 +24,33 @@ export const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
-              Home
+              {t("nav.home")}
             </Link>
             <Link to="/upload" className="text-foreground hover:text-primary transition-colors">
-              Upload & Analyze
+              {t("nav.upload")}
             </Link>
             <Link to="/dashboard" className="text-foreground hover:text-primary transition-colors">
-              Dashboard
+              {t("nav.dashboard")}
+            </Link>
+            <Link to="/viewer3d" className="text-foreground hover:text-primary transition-colors">
+              {t("nav.viewer3d")}
+            </Link>
+            <Link to="/chat" className="text-foreground hover:text-primary transition-colors">
+              {t("nav.chat")}
+            </Link>
+            <Link to="/certificates" className="text-foreground hover:text-primary transition-colors">
+              {t("nav.certificates")}
+            </Link>
+            <Link to="/admin" className="text-foreground hover:text-primary transition-colors">
+              {t("nav.admin")}
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost">Sign In</Button>
-            <Button className="bg-gradient-to-r from-accent to-gold-light hover:shadow-gold transition-all duration-300">
-              Get Started
+          <div className="hidden md:flex items-center gap-2">
+            <LanguageSwitcher />
+            <Button variant="ghost">{t("nav.signIn")}</Button>
+            <Button className="bg-gradient-to-r from-accent to-teal-light hover:shadow-accent transition-all duration-300">
+              {t("nav.getStarted")}
             </Button>
           </div>
 
@@ -48,31 +64,32 @@ export const Navbar = () => {
 
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top">
-            <Link
-              to="/"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
+            <Link to="/" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.home")}
             </Link>
-            <Link
-              to="/upload"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Upload & Analyze
+            <Link to="/upload" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.upload")}
             </Link>
-            <Link
-              to="/dashboard"
-              className="block text-foreground hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Dashboard
+            <Link to="/dashboard" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.dashboard")}
             </Link>
-            <div className="flex flex-col gap-2 pt-2">
-              <Button variant="ghost" className="w-full">Sign In</Button>
-              <Button className="w-full bg-gradient-to-r from-accent to-gold-light">
-                Get Started
+            <Link to="/viewer3d" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.viewer3d")}
+            </Link>
+            <Link to="/chat" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.chat")}
+            </Link>
+            <Link to="/certificates" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.certificates")}
+            </Link>
+            <Link to="/admin" className="block text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              {t("nav.admin")}
+            </Link>
+            <div className="flex flex-col gap-2 pt-2 border-t">
+              <LanguageSwitcher />
+              <Button variant="ghost" className="w-full">{t("nav.signIn")}</Button>
+              <Button className="w-full bg-gradient-to-r from-accent to-teal-light">
+                {t("nav.getStarted")}
               </Button>
             </div>
           </div>

@@ -4,8 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Upload as UploadIcon, File, CheckCircle, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const Upload = () => {
+  const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -58,11 +60,11 @@ const Upload = () => {
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold">
               <span className="bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-                Upload & Analyze
+                {t("upload.title")}
               </span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Upload your architectural drawings for instant AI-powered analysis
+              {t("upload.subtitle")}
             </p>
           </div>
 
@@ -79,8 +81,8 @@ const Upload = () => {
             <div className="text-center space-y-6">
               {uploadedFile ? (
                 <div className="space-y-4 animate-in fade-in slide-in-from-bottom">
-                  <div className="mx-auto w-16 h-16 bg-gradient-to-br from-accent to-gold rounded-full flex items-center justify-center shadow-gold">
-                    <CheckCircle className="h-8 w-8 text-primary" />
+                  <div className="mx-auto w-16 h-16 bg-gradient-to-br from-accent to-teal-light rounded-full flex items-center justify-center shadow-accent">
+                    <CheckCircle className="h-8 w-8 text-white" />
                   </div>
                   <div className="space-y-2">
                     <p className="text-lg font-semibold">{uploadedFile.name}</p>
@@ -97,10 +99,10 @@ const Upload = () => {
                       {isAnalyzing ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Analyzing...
+                          {t("upload.analyzing")}
                         </>
                       ) : (
-                        "Start Analysis"
+                        t("upload.startAnalysis")
                       )}
                     </Button>
                     <Button
@@ -108,7 +110,7 @@ const Upload = () => {
                       onClick={() => setUploadedFile(null)}
                       disabled={isAnalyzing}
                     >
-                      Upload Different File
+                      {t("upload.uploadDifferent")}
                     </Button>
                   </div>
                 </div>
@@ -119,10 +121,10 @@ const Upload = () => {
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-xl font-semibold">
-                      Drop your architectural plans here
+                      {t("upload.dropHere")}
                     </h3>
                     <p className="text-muted-foreground">
-                      or click to browse files
+                      {t("upload.orBrowse")}
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-2 justify-center text-sm text-muted-foreground">
@@ -141,10 +143,10 @@ const Upload = () => {
                     accept=".dwg,.dxf,.pdf,.ifc,.rvt,.png,.jpg,.jpeg"
                   />
                   <label htmlFor="file-upload">
-                    <Button asChild className="cursor-pointer bg-gradient-to-r from-accent to-gold-light hover:shadow-gold transition-all duration-300">
+                    <Button asChild className="cursor-pointer bg-gradient-to-r from-accent to-teal-light hover:shadow-accent transition-all duration-300">
                       <span>
                         <File className="mr-2 h-4 w-4" />
-                        Browse Files
+                        {t("upload.browseFiles")}
                       </span>
                     </Button>
                   </label>
@@ -155,21 +157,21 @@ const Upload = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6 space-y-2">
-              <h4 className="font-semibold">Instant Analysis</h4>
+              <h4 className="font-semibold">{t("upload.instantAnalysis")}</h4>
               <p className="text-sm text-muted-foreground">
-                AI-powered review in seconds
+                {t("upload.instantDesc")}
               </p>
             </Card>
             <Card className="p-6 space-y-2">
-              <h4 className="font-semibold">Saudi Compliance</h4>
+              <h4 className="font-semibold">{t("upload.saudiCompliance")}</h4>
               <p className="text-sm text-muted-foreground">
-                Verified against official guidelines
+                {t("upload.saudiDesc")}
               </p>
             </Card>
             <Card className="p-6 space-y-2">
-              <h4 className="font-semibold">Actionable Insights</h4>
+              <h4 className="font-semibold">{t("upload.actionableInsights")}</h4>
               <p className="text-sm text-muted-foreground">
-                Clear recommendations for improvement
+                {t("upload.actionableDesc")}
               </p>
             </Card>
           </div>
