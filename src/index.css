@@ -8,59 +8,64 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Saudi-inspired architectural palette */
-    --background: 35 25% 96%;
-    --foreground: 210 20% 15%;
+    /* Modern green architectural palette */
+    --background: 120 15% 97%;
+    --foreground: 140 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 20% 15%;
+    --card-foreground: 140 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 15%;
+    --popover-foreground: 140 25% 15%;
 
-    /* Deep blue primary inspired by Saudi architecture */
-    --primary: 210 55% 25%;
-    --primary-foreground: 35 40% 95%;
+    /* Deep forest green primary */
+    --primary: 140 60% 25%;
+    --primary-foreground: 120 15% 97%;
 
-    /* Warm sand tones */
-    --secondary: 35 35% 85%;
-    --secondary-foreground: 210 20% 15%;
+    /* Light green secondary */
+    --secondary: 120 25% 90%;
+    --secondary-foreground: 140 25% 15%;
 
-    --muted: 35 20% 90%;
-    --muted-foreground: 210 15% 45%;
+    --muted: 120 15% 92%;
+    --muted-foreground: 140 20% 45%;
 
-    /* Professional teal accent */
-    --accent: 185 65% 45%;
+    /* Vibrant emerald accent */
+    --accent: 160 75% 40%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 35 40% 95%;
+    --destructive-foreground: 120 15% 97%;
 
-    --border: 35 20% 85%;
-    --input: 35 20% 85%;
-    --ring: 185 65% 45%;
+    --border: 120 20% 88%;
+    --input: 120 20% 88%;
+    --ring: 160 75% 40%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom architectural tokens */
-    --sand: 35 35% 75%;
-    --sand-dark: 35 30% 60%;
-    --teal: 185 65% 45%;
-    --teal-light: 185 70% 60%;
-    --deep-blue: 210 55% 25%;
-    --deep-blue-dark: 210 60% 18%;
+    /* Custom green tokens */
+    --sage: 120 25% 75%;
+    --sage-dark: 120 30% 60%;
+    --emerald: 160 75% 40%;
+    --emerald-light: 160 70% 50%;
+    --forest: 140 60% 25%;
+    --forest-dark: 140 65% 18%;
+    --mint: 150 40% 85%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210 55% 25%) 0%, hsl(210 60% 18%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(185 65% 45%) 0%, hsl(185 70% 60%) 100%);
-    --gradient-sand: linear-gradient(180deg, hsl(35 35% 85%) 0%, hsl(35 25% 96%) 100%);
+    /* Enhanced gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(140 60% 25%) 0%, hsl(160 75% 40%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(160 75% 40%) 0%, hsl(160 70% 50%) 100%);
+    --gradient-sage: linear-gradient(180deg, hsl(120 25% 90%) 0%, hsl(120 15% 97%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(140 60% 25%) 0%, hsl(150 70% 35%) 100%);
 
-    /* Shadows */
-    --shadow-elegant: 0 10px 40px -10px hsl(210 55% 25% / 0.2);
-    --shadow-accent: 0 8px 30px -8px hsl(185 65% 45% / 0.3);
+    /* Enhanced shadows */
+    --shadow-elegant: 0 20px 60px -15px hsl(140 60% 25% / 0.25);
+    --shadow-accent: 0 15px 40px -10px hsl(160 75% 40% / 0.35);
+    --shadow-glow: 0 0 30px hsl(160 75% 40% / 0.2);
     
-    /* Animations */
+    /* Enhanced animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 35 25% 96%;
     --sidebar-foreground: 210 20% 15%;
@@ -101,19 +106,19 @@ All colors MUST be HSL.
     --input: 210 15% 22%;
     --ring: 45 85% 55%;
 
-    --sand: 35 25% 30%;
-    --sand-dark: 35 20% 20%;
-    --teal: 185 65% 45%;
-    --teal-light: 185 70% 55%;
-    --deep-blue: 210 50% 35%;
-    --deep-blue-dark: 210 55% 25%;
+    --sage: 120 20% 30%;
+    --sage-dark: 120 25% 20%;
+    --emerald: 160 75% 40%;
+    --emerald-light: 160 70% 50%;
+    --forest: 140 55% 30%;
+    --forest-dark: 140 60% 22%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(210 20% 12%) 0%, hsl(210 18% 16%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(185 65% 45%) 0%, hsl(185 70% 55%) 100%);
-    --gradient-sand: linear-gradient(180deg, hsl(210 15% 22%) 0%, hsl(210 20% 12%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(140 25% 12%) 0%, hsl(140 30% 16%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(160 75% 40%) 0%, hsl(160 70% 50%) 100%);
+    --gradient-sage: linear-gradient(180deg, hsl(120 15% 22%) 0%, hsl(140 25% 12%) 100%);
 
-    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
-    --shadow-accent: 0 8px 30px -8px hsl(185 65% 45% / 0.4);
+    --shadow-elegant: 0 20px 60px -15px hsl(0 0% 0% / 0.6);
+    --shadow-accent: 0 15px 40px -10px hsl(160 75% 40% / 0.5);
 
     --sidebar-background: 210 20% 12%;
     --sidebar-foreground: 35 30% 90%;
@@ -133,5 +138,187 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="rtl"] .flex {
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .justify-start {
+    justify-content: flex-end;
+  }
+
+  [dir="rtl"] .justify-end {
+    justify-content: flex-start;
+  }
+
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+
+  /* Margin and padding adjustments for RTL */
+  [dir="rtl"] .ml-2 {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+
+  [dir="rtl"] .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+
+  [dir="rtl"] .ml-4 {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  [dir="rtl"] .mr-4 {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  [dir="rtl"] .pl-4 {
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+
+  [dir="rtl"] .pr-4 {
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+
+  [dir="rtl"] .pl-6 {
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  [dir="rtl"] .pr-6 {
+    padding-right: 0;
+    padding-left: 1.5rem;
+  }
+
+  /* Arabic font optimization */
+  [dir="rtl"] {
+    font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    word-spacing: 0.1em;
+  }
+
+  /* Enhanced Arabic typography */
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6 {
+    line-height: 1.6;
+    word-spacing: 0.15em;
+  }
+
+  [dir="rtl"] p {
+    line-height: 1.9;
+    word-spacing: 0.12em;
+  }
+
+  /* Fix gradient text visibility for Arabic */
+  [dir="rtl"] .bg-gradient-to-r {
+    background: hsl(140 60% 25%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Alternative solid color for better readability */
+  [dir="rtl"] .text-gradient-fallback {
+    color: hsl(140 60% 25%) !important;
+    background: none !important;
+    -webkit-text-fill-color: unset !important;
+  }
+
+  /* Fix for icons in RTL */
+  [dir="rtl"] .lucide {
+    transform: scaleX(-1);
+  }
+
+  /* Specific icons that shouldn't be flipped */
+  [dir="rtl"] .lucide-globe,
+  [dir="rtl"] .lucide-building2,
+  [dir="rtl"] .lucide-sparkles,
+  [dir="rtl"] .lucide-shield,
+  [dir="rtl"] .lucide-zap,
+  [dir="rtl"] .lucide-award,
+  [dir="rtl"] .lucide-activity,
+  [dir="rtl"] .lucide-check-circle,
+  [dir="rtl"] .lucide-file-check,
+  [dir="rtl"] .lucide-clock,
+  [dir="rtl"] .lucide-alert-circle,
+  [dir="rtl"] .lucide-trending-up {
+    transform: none;
+  }
+
+  /* Enhanced UI animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 20px hsl(160 75% 40% / 0.3); }
+    to { box-shadow: 0 0 30px hsl(160 75% 40% / 0.6); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Enhanced button styles */
+  .btn-gradient {
+    background: linear-gradient(135deg, hsl(160 75% 40%) 0%, hsl(140 60% 25%) 100%);
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px -10px hsl(160 75% 40% / 0.4);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px hsl(140 60% 25% / 0.25);
   }
 }

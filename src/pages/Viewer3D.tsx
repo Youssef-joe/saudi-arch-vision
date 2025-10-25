@@ -23,11 +23,11 @@ const Viewer3D = () => {
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold">
               <span className="bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-                3D Viewer
+                {t("viewer3d.title")}
               </span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Interactive 3D visualization of your architectural plans
+              {t("viewer3d.subtitle")}
             </p>
           </div>
 
@@ -37,8 +37,8 @@ const Viewer3D = () => {
               <div className="relative bg-gradient-to-br from-secondary/50 to-background h-[600px] flex items-center justify-center">
                 <div className="text-center space-y-4 text-muted-foreground">
                   <Layers className="h-16 w-16 mx-auto opacity-50" />
-                  <p className="text-lg">3D model will be rendered here</p>
-                  <p className="text-sm">Upload a plan to view its 3D representation</p>
+                  <p className="text-lg">{t("viewer3d.modelPlaceholder")}</p>
+                  <p className="text-sm">{t("viewer3d.uploadPrompt")}</p>
                 </div>
 
                 {/* Controls */}
@@ -64,23 +64,23 @@ const Viewer3D = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                   <Eye className="h-5 w-5 text-accent" />
-                  View Options
+                  {t("viewer3d.viewOptions")}
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">Show Grid</span>
+                    <span className="text-sm">{t("viewer3d.options.showGrid")}</span>
                     <input type="checkbox" className="toggle" defaultChecked />
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">Show Dimensions</span>
+                    <span className="text-sm">{t("viewer3d.options.showDimensions")}</span>
                     <input type="checkbox" className="toggle" defaultChecked />
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">Show Annotations</span>
+                    <span className="text-sm">{t("viewer3d.options.showAnnotations")}</span>
                     <input type="checkbox" className="toggle" />
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">Wireframe Mode</span>
+                    <span className="text-sm">{t("viewer3d.options.wireframeMode")}</span>
                     <input type="checkbox" className="toggle" />
                   </div>
                 </div>
@@ -89,10 +89,17 @@ const Viewer3D = () => {
               <div className="border-t pt-6">
                 <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                   <Layers className="h-5 w-5 text-accent" />
-                  Layers
+                  {t("viewer3d.layers")}
                 </h3>
                 <div className="space-y-2">
-                  {["Walls", "Windows", "Doors", "Furniture", "HVAC", "Electrical"].map((layer) => (
+                  {[
+                    t("viewer3d.layerTypes.walls"),
+                    t("viewer3d.layerTypes.windows"),
+                    t("viewer3d.layerTypes.doors"),
+                    t("viewer3d.layerTypes.furniture"),
+                    t("viewer3d.layerTypes.hvac"),
+                    t("viewer3d.layerTypes.electrical")
+                  ].map((layer) => (
                     <div key={layer} className="flex items-center gap-2">
                       <input type="checkbox" defaultChecked className="rounded" />
                       <span className="text-sm">{layer}</span>
@@ -102,40 +109,40 @@ const Viewer3D = () => {
               </div>
 
               <Button className="w-full bg-gradient-to-r from-accent to-teal-light">
-                Export Model
+                {t("viewer3d.exportModel")}
               </Button>
             </Card>
           </div>
 
           {/* Issue Markers */}
           <Card className="p-6">
-            <h3 className="text-xl font-semibold mb-4">Design Issues & Recommendations</h3>
+            <h3 className="text-xl font-semibold mb-4">{t("viewer3d.issues.title")}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border border-orange-200 bg-orange-50 rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-3 h-3 bg-orange-500 rounded-full" />
-                  <span className="font-semibold text-sm">Ventilation</span>
+                  <span className="font-semibold text-sm">{t("viewer3d.issues.ventilation")}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Insufficient natural ventilation in Room 3A
+                  {t("viewer3d.issues.ventilationDesc")}
                 </p>
               </div>
               <div className="p-4 border border-yellow-200 bg-yellow-50 rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                  <span className="font-semibold text-sm">Orientation</span>
+                  <span className="font-semibold text-sm">{t("viewer3d.issues.orientation")}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  North-facing windows may require better insulation
+                  {t("viewer3d.issues.orientationDesc")}
                 </p>
               </div>
               <div className="p-4 border border-green-200 bg-green-50 rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full" />
-                  <span className="font-semibold text-sm">Compliant</span>
+                  <span className="font-semibold text-sm">{t("viewer3d.issues.compliant")}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Energy efficiency standards met
+                  {t("viewer3d.issues.compliantDesc")}
                 </p>
               </div>
             </div>

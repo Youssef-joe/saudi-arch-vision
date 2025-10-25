@@ -16,28 +16,28 @@ const Dashboard = () => {
   const stats = [
     {
       icon: FileCheck,
-      label: "Total Projects",
+      label: t("dashboard.totalProjects"),
       value: "24",
       change: "+3 this week",
       color: "from-primary to-deepBlue",
     },
     {
       icon: CheckCircle,
-      label: "Approved",
+      label: t("dashboard.approved"),
       value: "18",
       change: "+2 this week",
       color: "from-green-500 to-green-600",
     },
     {
       icon: Clock,
-      label: "Under Review",
+      label: t("dashboard.underReview"),
       value: "4",
       change: "2 pending action",
       color: "from-accent to-gold",
     },
     {
       icon: AlertCircle,
-      label: "Needs Revision",
+      label: t("dashboard.needsRevision"),
       value: "2",
       change: "Action required",
       color: "from-orange-500 to-orange-600",
@@ -113,8 +113,8 @@ const Dashboard = () => {
           {/* Recent Projects */}
           <Card className="p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold">Recent Projects</h2>
-              <Button variant="outline">View All</Button>
+              <h2 className="text-2xl font-semibold">{t("dashboard.recentProjects")}</h2>
+              <Button variant="outline">{t("dashboard.viewAll")}</Button>
             </div>
             <div className="space-y-4">
               {recentProjects.map((project, index) => (
@@ -128,7 +128,7 @@ const Dashboard = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-sm font-medium">Compliance</p>
+                      <p className="text-sm font-medium">{t("dashboard.compliance")}</p>
                       <p className="text-lg font-bold text-accent">{project.compliance}</p>
                     </div>
                     <div
@@ -153,7 +153,7 @@ const Dashboard = () => {
             <Card className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <TrendingUp className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-semibold">Compliance Trend</h3>
+                <h3 className="text-xl font-semibold">{t("dashboard.complianceTrend")}</h3>
               </div>
               <div className="h-48 flex items-center justify-center text-muted-foreground">
                 Chart visualization coming soon
@@ -163,19 +163,19 @@ const Dashboard = () => {
             <Card className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Award className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-semibold">Certifications</h3>
+                <h3 className="text-xl font-semibold">{t("dashboard.certifications")}</h3>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Total Issued</span>
+                  <span className="text-muted-foreground">{t("dashboard.totalIssued")}</span>
                   <span className="text-2xl font-bold">18</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">This Month</span>
+                  <span className="text-muted-foreground">{t("dashboard.thisMonth")}</span>
                   <span className="text-2xl font-bold text-accent">5</span>
                 </div>
                 <Button className="w-full" variant="outline">
-                  View All Certificates
+                  {t("dashboard.viewAllCertificates")}
                 </Button>
               </div>
             </Card>

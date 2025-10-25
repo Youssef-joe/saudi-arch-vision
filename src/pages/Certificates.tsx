@@ -45,11 +45,11 @@ const Certificates = () => {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold">
                 <span className="bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-                  Certificates
+                  {t("certificates.title")}
                 </span>
               </h1>
               <p className="text-muted-foreground mt-2">
-                View and manage compliance certificates
+                {t("certificates.subtitle")}
               </p>
             </div>
           </div>
@@ -59,13 +59,13 @@ const Certificates = () => {
             <div className="flex gap-4">
               <div className="flex-1">
                 <Input
-                  placeholder="Search certificates by ID, project name, or date..."
+                  placeholder={t("certificates.searchPlaceholder")}
                   className="w-full"
                 />
               </div>
               <Button className="bg-gradient-to-r from-accent to-teal-light">
                 <Search className="h-4 w-4 mr-2" />
-                Search
+                {t("certificates.search")}
               </Button>
             </div>
           </Card>
@@ -93,20 +93,20 @@ const Certificates = () => {
                       </div>
                       
                       <p className="text-sm text-muted-foreground font-mono">
-                        Certificate ID: {cert.id}
+                        {t("certificates.certificateId")}: {cert.id}
                       </p>
                       
                       <div className="grid grid-cols-3 gap-4 pt-2">
                         <div>
-                          <p className="text-xs text-muted-foreground">Issued Date</p>
+                          <p className="text-xs text-muted-foreground">{t("certificates.issuedDate")}</p>
                           <p className="text-sm font-medium">{cert.issuedDate}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Valid Until</p>
+                          <p className="text-xs text-muted-foreground">{t("certificates.validUntil")}</p>
                           <p className="text-sm font-medium">{cert.validUntil}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Compliance</p>
+                          <p className="text-xs text-muted-foreground">{t("certificates.compliance")}</p>
                           <p className="text-sm font-medium text-accent">{cert.compliance}</p>
                         </div>
                       </div>
@@ -119,7 +119,7 @@ const Certificates = () => {
                     </Button>
                     <Button className="bg-gradient-to-r from-accent to-teal-light">
                       <Download className="h-4 w-4 mr-2" />
-                      Download
+                      {t("certificates.download")}
                     </Button>
                   </div>
                 </div>
@@ -131,19 +131,19 @@ const Certificates = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <Card className="p-6 text-center">
               <p className="text-3xl font-bold text-accent">18</p>
-              <p className="text-sm text-muted-foreground mt-1">Total Issued</p>
+              <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.totalIssued")}</p>
             </Card>
             <Card className="p-6 text-center">
               <p className="text-3xl font-bold text-green-600">18</p>
-              <p className="text-sm text-muted-foreground mt-1">Valid</p>
+              <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.valid")}</p>
             </Card>
             <Card className="p-6 text-center">
               <p className="text-3xl font-bold text-orange-600">0</p>
-              <p className="text-sm text-muted-foreground mt-1">Expiring Soon</p>
+              <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.expiringSoon")}</p>
             </Card>
             <Card className="p-6 text-center">
               <p className="text-3xl font-bold">5</p>
-              <p className="text-sm text-muted-foreground mt-1">This Month</p>
+              <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.thisMonth")}</p>
             </Card>
           </div>
         </div>

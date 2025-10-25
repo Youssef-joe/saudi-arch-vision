@@ -22,10 +22,10 @@ const AIChat = () => {
   const [input, setInput] = useState("");
 
   const suggestions = [
-    "What are the ventilation requirements?",
-    "How to improve energy efficiency?",
-    "Explain natural lighting standards",
-    "Saudi building code compliance",
+    t("aiChat.suggestions.ventilation"),
+    t("aiChat.suggestions.energy"),
+    t("aiChat.suggestions.lighting"),
+    t("aiChat.suggestions.compliance"),
   ];
 
   const handleSend = () => {
@@ -55,11 +55,11 @@ const AIChat = () => {
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold">
               <span className="bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-                AI Architectural Assistant
+                {t("aiChat.title")}
               </span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Expert guidance on Saudi Architectural Design Guidelines
+              {t("aiChat.subtitle")}
             </p>
           </div>
 
@@ -112,7 +112,7 @@ const AIChat = () => {
               <Card className="p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles className="h-5 w-5 text-accent" />
-                  <h3 className="font-semibold">Quick Suggestions</h3>
+                  <h3 className="font-semibold">{t("aiChat.quickSuggestions")}</h3>
                 </div>
                 <div className="space-y-2">
                   {suggestions.map((suggestion, index) => (
@@ -131,14 +131,14 @@ const AIChat = () => {
               <Card className="p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <FileText className="h-5 w-5 text-accent" />
-                  <h3 className="font-semibold">Knowledge Base</h3>
+                  <h3 className="font-semibold">{t("aiChat.knowledgeBase")}</h3>
                 </div>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Saudi Building Code</li>
-                  <li>• Energy Efficiency Standards</li>
-                  <li>• Fire Safety Guidelines</li>
-                  <li>• Accessibility Requirements</li>
-                  <li>• Sustainability Practices</li>
+                  <li>• {t("aiChat.knowledge.buildingCode")}</li>
+                  <li>• {t("aiChat.knowledge.energyStandards")}</li>
+                  <li>• {t("aiChat.knowledge.fireSafety")}</li>
+                  <li>• {t("aiChat.knowledge.accessibility")}</li>
+                  <li>• {t("aiChat.knowledge.sustainability")}</li>
                 </ul>
               </Card>
             </div>

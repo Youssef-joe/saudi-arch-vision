@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Building2, Menu } from "lucide-react";
+import { Layers, Menu } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -10,15 +10,16 @@ export const Navbar = () => {
   const { t } = useTranslation();
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-0 w-full z-50 glass border-b border-border/50 shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="p-2 bg-gradient-to-br from-primary to-deepBlue rounded-lg group-hover:shadow-gold transition-all duration-300">
-              <Building2 className="h-6 w-6 text-primary-foreground" />
+            <div className="p-2 bg-gradient-to-br from-primary to-forest rounded-xl group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 relative">
+              <Layers className="h-6 w-6 text-primary-foreground" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-              ArchReview AI
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-forest bg-clip-text text-transparent text-gradient-fallback">
+              {t("brand.name")}
             </span>
           </Link>
 
@@ -49,7 +50,7 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher />
             <Button variant="ghost">{t("nav.signIn")}</Button>
-            <Button className="bg-gradient-to-r from-accent to-teal-light hover:shadow-accent transition-all duration-300">
+            <Button className="btn-gradient text-white font-semibold px-6 rounded-xl">
               {t("nav.getStarted")}
             </Button>
           </div>
@@ -88,7 +89,7 @@ export const Navbar = () => {
             <div className="flex flex-col gap-2 pt-2 border-t">
               <LanguageSwitcher />
               <Button variant="ghost" className="w-full">{t("nav.signIn")}</Button>
-              <Button className="w-full bg-gradient-to-r from-accent to-teal-light">
+              <Button className="w-full btn-gradient text-white font-semibold rounded-xl">
                 {t("nav.getStarted")}
               </Button>
             </div>

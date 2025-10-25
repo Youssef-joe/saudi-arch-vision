@@ -15,10 +15,10 @@ const Admin = () => {
   const { t } = useTranslation();
 
   const systemStats = [
-    { label: "Total Users", value: "248", icon: Users, color: "from-blue-500 to-blue-600" },
-    { label: "Active Projects", value: "42", icon: Activity, color: "from-accent to-teal" },
-    { label: "Storage Used", value: "2.4 TB", icon: Database, color: "from-purple-500 to-purple-600" },
-    { label: "Pending Reviews", value: "8", icon: Shield, color: "from-orange-500 to-orange-600" },
+    { label: t("admin.stats.totalUsers"), value: "248", icon: Users, color: "from-blue-500 to-blue-600" },
+    { label: t("admin.stats.activeProjects"), value: "42", icon: Activity, color: "from-accent to-teal" },
+    { label: t("admin.stats.storageUsed"), value: "2.4 TB", icon: Database, color: "from-purple-500 to-purple-600" },
+    { label: t("admin.stats.pendingReviews"), value: "8", icon: Shield, color: "from-orange-500 to-orange-600" },
   ];
 
   const recentActivity = [
@@ -38,16 +38,16 @@ const Admin = () => {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold">
                 <span className="bg-gradient-to-r from-primary to-deepBlue bg-clip-text text-transparent">
-                  Admin Panel
+                  {t("admin.title")}
                 </span>
               </h1>
               <p className="text-muted-foreground mt-2">
-                System management and monitoring
+                {t("admin.subtitle")}
               </p>
             </div>
             <Button className="bg-gradient-to-r from-accent to-teal-light">
               <Settings className="h-4 w-4 mr-2" />
-              System Settings
+              {t("admin.systemSettings")}
             </Button>
           </div>
 
@@ -74,9 +74,9 @@ const Admin = () => {
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
                   <Activity className="h-5 w-5 text-accent" />
-                  Recent Activity
+                  {t("admin.recentActivity")}
                 </h2>
-                <Button variant="outline" size="sm">View All</Button>
+                <Button variant="outline" size="sm">{t("admin.viewAll")}</Button>
               </div>
               <div className="space-y-4">
                 {recentActivity.map((activity, index) => (
@@ -97,23 +97,23 @@ const Admin = () => {
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
                   <Shield className="h-5 w-5 text-accent" />
-                  System Health
+                  {t("admin.systemHealth")}
                 </h2>
                 <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                  All Systems Operational
+                  {t("admin.allSystemsOperational")}
                 </span>
               </div>
               <div className="space-y-4">
                 {[
-                  { service: "API Server", status: "Operational", uptime: "99.9%" },
-                  { service: "Database", status: "Operational", uptime: "99.8%" },
-                  { service: "AI Analysis", status: "Operational", uptime: "99.7%" },
-                  { service: "File Storage", status: "Operational", uptime: "99.9%" },
+                  { service: t("admin.services.apiServer"), status: t("admin.services.operational"), uptime: "99.9%" },
+                  { service: t("admin.services.database"), status: t("admin.services.operational"), uptime: "99.8%" },
+                  { service: t("admin.services.aiAnalysis"), status: t("admin.services.operational"), uptime: "99.7%" },
+                  { service: t("admin.services.fileStorage"), status: t("admin.services.operational"), uptime: "99.9%" },
                 ].map((service, index) => (
                   <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
                     <div>
                       <p className="font-medium text-sm">{service.service}</p>
-                      <p className="text-xs text-muted-foreground">Uptime: {service.uptime}</p>
+                      <p className="text-xs text-muted-foreground">{t("admin.services.uptime")}: {service.uptime}</p>
                     </div>
                     <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">
                       {service.status}
@@ -126,19 +126,19 @@ const Admin = () => {
 
           {/* Quick Actions */}
           <Card className="p-6">
-            <h2 className="text-xl font-semibold mb-6">Quick Actions</h2>
+            <h2 className="text-xl font-semibold mb-6">{t("admin.quickActions")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Button variant="outline" className="h-auto py-6 flex flex-col gap-2">
                 <Users className="h-6 w-6" />
-                <span>Manage Users</span>
+                <span>{t("admin.actions.manageUsers")}</span>
               </Button>
               <Button variant="outline" className="h-auto py-6 flex flex-col gap-2">
                 <Bell className="h-6 w-6" />
-                <span>System Alerts</span>
+                <span>{t("admin.actions.systemAlerts")}</span>
               </Button>
               <Button variant="outline" className="h-auto py-6 flex flex-col gap-2">
                 <Database className="h-6 w-6" />
-                <span>Backup Data</span>
+                <span>{t("admin.actions.backupData")}</span>
               </Button>
             </div>
           </Card>

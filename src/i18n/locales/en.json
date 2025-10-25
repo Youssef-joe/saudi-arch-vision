@@ -1,4 +1,7 @@
 {
+  "brand": {
+    "name": "ArchReview AI"
+  },
   "nav": {
     "home": "Home",
     "upload": "Upload & Analyze",
@@ -11,7 +14,6 @@
     "getStarted": "Get Started"
   },
   "home": {
-    "badge": "AI-Powered Architecture Review",
     "title1": "Transform Architectural",
     "title2": "Review & Certification",
     "description": "Upload your architectural plans and get instant AI-powered analysis, compliance verification, and performance simulation aligned with Saudi Architectural Design Guidelines.",
@@ -110,5 +112,108 @@
     "placeholder": "Ask me about architectural guidelines, compliance, or design recommendations...",
     "send": "Send",
     "greeting": "Hello! I'm your AI architectural assistant. How can I help you today?"
+  },
+  "aiChat": {
+    "title": "AI Architectural Assistant",
+    "subtitle": "Expert guidance on Saudi Architectural Design Guidelines",
+    "quickSuggestions": "Quick Suggestions",
+    "knowledgeBase": "Knowledge Base",
+    "suggestions": {
+      "ventilation": "What are the ventilation requirements?",
+      "energy": "How to improve energy efficiency?",
+      "lighting": "Explain natural lighting standards",
+      "compliance": "Saudi building code compliance"
+    },
+    "knowledge": {
+      "buildingCode": "Saudi Building Code",
+      "energyStandards": "Energy Efficiency Standards",
+      "fireSafety": "Fire Safety Guidelines",
+      "accessibility": "Accessibility Requirements",
+      "sustainability": "Sustainability Practices"
+    }
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "View and manage compliance certificates",
+    "search": "Search",
+    "searchPlaceholder": "Search certificates by ID, project name, or date...",
+    "certificateId": "Certificate ID",
+    "issuedDate": "Issued Date",
+    "validUntil": "Valid Until",
+    "compliance": "Compliance",
+    "status": "Valid",
+    "download": "Download",
+    "stats": {
+      "totalIssued": "Total Issued",
+      "valid": "Valid",
+      "expiringSoon": "Expiring Soon",
+      "thisMonth": "This Month"
+    }
+  },
+  "viewer3d": {
+    "title": "3D Viewer",
+    "subtitle": "Interactive 3D visualization of your architectural plans",
+    "modelPlaceholder": "3D model will be rendered here",
+    "uploadPrompt": "Upload a plan to view its 3D representation",
+    "viewOptions": "View Options",
+    "layers": "Layers",
+    "exportModel": "Export Model",
+    "options": {
+      "showGrid": "Show Grid",
+      "showDimensions": "Show Dimensions",
+      "showAnnotations": "Show Annotations",
+      "wireframeMode": "Wireframe Mode"
+    },
+    "layerTypes": {
+      "walls": "Walls",
+      "windows": "Windows",
+      "doors": "Doors",
+      "furniture": "Furniture",
+      "hvac": "HVAC",
+      "electrical": "Electrical"
+    },
+    "issues": {
+      "title": "Design Issues & Recommendations",
+      "ventilation": "Ventilation",
+      "ventilationDesc": "Insufficient natural ventilation in Room 3A",
+      "orientation": "Orientation",
+      "orientationDesc": "North-facing windows may require better insulation",
+      "compliant": "Compliant",
+      "compliantDesc": "Energy efficiency standards met"
+    }
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "subtitle": "System management and monitoring",
+    "systemSettings": "System Settings",
+    "recentActivity": "Recent Activity",
+    "systemHealth": "System Health",
+    "allSystemsOperational": "All Systems Operational",
+    "quickActions": "Quick Actions",
+    "viewAll": "View All",
+    "stats": {
+      "totalUsers": "Total Users",
+      "activeProjects": "Active Projects",
+      "storageUsed": "Storage Used",
+      "pendingReviews": "Pending Reviews"
+    },
+    "services": {
+      "apiServer": "API Server",
+      "database": "Database",
+      "aiAnalysis": "AI Analysis",
+      "fileStorage": "File Storage",
+      "operational": "Operational",
+      "uptime": "Uptime"
+    },
+    "actions": {
+      "manageUsers": "Manage Users",
+      "systemAlerts": "System Alerts",
+      "backupData": "Backup Data"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "returnHome": "Return to Home"
   }
 }
