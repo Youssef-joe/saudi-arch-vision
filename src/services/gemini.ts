@@ -34,7 +34,7 @@ function getArchitecturalContext(isArabic: boolean) {
 - أنظمة التكييف والتهوية للمناخ الصحراوي
 - متطلبات الإضاءة والتهوية الطبيعية
 
-قدم دائماً إجابات دقيقة ومهنية تركز على المعايير المعمارية السعودية. اجعل الإجابات مختصرة وقابلة للتطبيق. أجب باللغة العربية.`;
+قدم دائماً إجابات دقيقة ومهنية تركز على المعايير المعمارية السعودية. اجعل الإجابات مختصرة جداً (3-4 جمل فقط) وقابلة للتطبيق. أجب باللغة العربية.`;
   } else {
     return `You are SIMA, an expert AI assistant specialized in Saudi Arabian architectural design guidelines and building codes. You provide professional guidance on:
 
@@ -48,7 +48,7 @@ function getArchitecturalContext(isArabic: boolean) {
 - HVAC systems for desert climate
 - Natural lighting and ventilation requirements
 
-Always provide accurate, professional responses focused on Saudi architectural standards. Keep responses concise and actionable. Respond in English.`;
+Always provide accurate, professional responses focused on Saudi architectural standards. Keep responses very brief (3-4 sentences only) and actionable. Respond in English.`;
   }
 }
 
@@ -101,7 +101,7 @@ ${isArabic ? 'يرجى تقديم إجابة مفيدة حول الإرشادا�
         ],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 512,
+          maxOutputTokens: 200,
         }
       }),
     });
