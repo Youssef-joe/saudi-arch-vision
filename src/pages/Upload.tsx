@@ -2,15 +2,31 @@ import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Upload as UploadIcon, File, CheckCircle, Loader2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Upload as UploadIcon, File, CheckCircle, Loader2, AlertTriangle, Shield, Eye, Download } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
+
+interface AnalysisResult {
+  compliance: number;
+  issues: Array<{
+    type: 'critical' | 'warning' | 'info';
+    title: string;
+    description: string;
+    location?: string;
+  }>;
+  recommendations: string[];
+  certificationStatus: 'approved' | 'conditional' | 'rejected';
+}
 
 const Upload = () => {
   const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -27,25 +43,73 @@ const Upload = () => {
     
     const file = e.dataTransfer.files[0];
     if (file) {
-      setUploadedFile(file);
-      toast.success(`File "${file.name}" uploaded successfully`);
+      processFile(file);
     }
   };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setUploadedFile(file);
-      toast.success(`File "${file.name}" uploaded successfully`);
+      processFile(file);
     }
+  };
+
+  const processFile = (file: File) => {
+    setUploadedFile(file);
+    setAnalysisResult(null);
+    
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+    
+    toast.success(`File "${file.name}" uploaded successfully`);
   };
 
   const handleAnalyze = () => {
     setIsAnalyzing(true);
     toast.info("Starting AI analysis...");
     
-    // Simulate analysis
+    // Professional mock analysis results
     setTimeout(() => {
+      const mockResult: AnalysisResult = {
+        compliance: 87,
+        issues: [
+          {
+            type: 'critical',
+            title: 'Fire Exit Width Violation',
+            description: 'Emergency exit corridor width is 1.8m, minimum required is 2.0m per Saudi Building Code Article 4.2.3',
+            location: 'Ground Floor - East Wing'
+          },
+          {
+            type: 'warning',
+            title: 'Natural Ventilation Deficiency',
+            description: 'Window-to-floor area ratio is 12%, recommended minimum is 15% for optimal natural ventilation',
+            location: 'Rooms 201-205'
+          },
+          {
+            type: 'info',
+            title: 'Energy Efficiency Opportunity',
+            description: 'Consider double-glazed windows for improved thermal performance and HVAC efficiency',
+            location: 'South-facing facades'
+          }
+        ],
+        recommendations: [
+          'Widen emergency exit corridor to 2.0m minimum width',
+          'Increase window sizes in rooms 201-205 or add mechanical ventilation',
+          'Install thermal insulation in external walls (minimum R-3.5)',
+          'Consider solar shading for south-facing windows',
+          'Implement LED lighting system for energy efficiency'
+        ],
+        certificationStatus: 'conditional'
+      };
+      
+      setAnalysisResult(mockResult);
       setIsAnalyzing(false);
       toast.success("Analysis complete! View results below.");
     }, 3000);
@@ -90,6 +154,15 @@ const Upload = () => {
                       {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB
                     </p>
                   </div>
+                  {imagePreview && (
+                    <div className="mt-4">
+                      <img 
+                        src={imagePreview} 
+                        alt="Preview" 
+                        className="max-w-full max-h-64 mx-auto rounded-lg shadow-lg"
+                      />
+                    </div>
+                  )}
                   <div className="flex gap-4 justify-center">
                     <Button
                       onClick={handleAnalyze}
@@ -107,7 +180,11 @@ const Upload = () => {
                     </Button>
                     <Button
                       variant="outline"
-                      onClick={() => setUploadedFile(null)}
+                      onClick={() => {
+                        setUploadedFile(null);
+                        setImagePreview(null);
+                        setAnalysisResult(null);
+                      }}
                       disabled={isAnalyzing}
                     >
                       {t("upload.uploadDifferent")}
@@ -154,6 +231,91 @@ const Upload = () => {
               )}
             </div>
           </Card>
+
+          {analysisResult && (
+            <div className="space-y-6">
+              <Card className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-semibold">Analysis Results</h3>
+                  <Badge 
+                    variant={analysisResult.certificationStatus === 'approved' ? 'default' : 
+                            analysisResult.certificationStatus === 'conditional' ? 'secondary' : 'destructive'}
+                  >
+                    {analysisResult.certificationStatus === 'approved' ? 'Approved' :
+                     analysisResult.certificationStatus === 'conditional' ? 'Conditional Approval' : 'Rejected'}
+                  </Badge>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium">Compliance Score</span>
+                      <span className="text-sm font-bold">{analysisResult.compliance}%</span>
+                    </div>
+                    <Progress value={analysisResult.compliance} className="h-2" />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center">
+                        <AlertTriangle className="mr-2 h-4 w-4" />
+                        Issues Found ({analysisResult.issues.length})
+                      </h4>
+                      <div className="space-y-2">
+                        {analysisResult.issues.map((issue, index) => (
+                          <div key={index} className="p-3 border rounded-lg">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <Badge 
+                                    variant={issue.type === 'critical' ? 'destructive' : 
+                                            issue.type === 'warning' ? 'secondary' : 'outline'}
+                                    className="text-xs"
+                                  >
+                                    {issue.type}
+                                  </Badge>
+                                  <span className="font-medium text-sm">{issue.title}</span>
+                                </div>
+                                <p className="text-xs text-muted-foreground mb-1">{issue.description}</p>
+                                {issue.location && (
+                                  <p className="text-xs text-accent font-medium">{issue.location}</p>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center">
+                        <Shield className="mr-2 h-4 w-4" />
+                        Recommendations
+                      </h4>
+                      <div className="space-y-2">
+                        {analysisResult.recommendations.map((rec, index) => (
+                          <div key={index} className="p-3 bg-secondary/50 rounded-lg">
+                            <p className="text-sm">{rec}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-3 pt-4 border-t">
+                    <Button className="flex-1">
+                      <Eye className="mr-2 h-4 w-4" />
+                      View 3D Model
+                    </Button>
+                    <Button variant="outline" className="flex-1">
+                      <Download className="mr-2 h-4 w-4" />
+                      Download Report
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6 space-y-2">
