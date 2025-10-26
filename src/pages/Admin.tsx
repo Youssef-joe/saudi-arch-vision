@@ -22,11 +22,23 @@ const Admin = () => {
   ];
 
   const recentActivity = [
-    { user: "Ahmed Al-Rashid", action: "Uploaded new project", time: "5 min ago" },
-    { user: "Sara Mohammed", action: "Approved certificate", time: "15 min ago" },
-    { user: "Khalid Hassan", action: "Updated project status", time: "1 hour ago" },
-    { user: "Fatima Ali", action: "Downloaded compliance report", time: "2 hours ago" },
+    { user: "Ahmed Al-Rashid", action: "Uploaded Al-Noor Residential Complex plans", time: "5 min ago", type: "upload" },
+    { user: "Sara Mohammed", action: "Approved SBC-CERT-2025-003 certificate", time: "15 min ago", type: "approval" },
+    { user: "Khalid Hassan", action: "Updated Kingdom Tower project status to Under Review", time: "1 hour ago", type: "update" },
+    { user: "Fatima Ali", action: "Downloaded compliance report for Green Mall project", time: "2 hours ago", type: "download" },
+    { user: "Omar Abdullah", action: "Initiated AI analysis for Heritage Center", time: "3 hours ago", type: "analysis" },
+    { user: "Layla Mansour", action: "Generated QR verification code", time: "4 hours ago", type: "verification" },
+    { user: "Mohammed Bin Salman", action: "Exported 3D model for Tech Hub project", time: "5 hours ago", type: "export" },
   ];
+
+  const systemMetrics = {
+    apiRequests: "2,847",
+    analysisJobs: "156",
+    storageUsage: "2.4 TB",
+    activeUsers: "89",
+    avgResponseTime: "245ms",
+    errorRate: "0.02%",
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,17 +90,32 @@ const Admin = () => {
                 </h2>
                 <Button variant="outline" size="sm">{t("admin.viewAll")}</Button>
               </div>
-              <div className="space-y-4">
-                {recentActivity.map((activity, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 border rounded-lg">
-                    <div className="w-2 h-2 bg-accent rounded-full mt-2" />
-                    <div className="flex-1">
-                      <p className="font-medium text-sm">{activity.user}</p>
-                      <p className="text-sm text-muted-foreground">{activity.action}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{activity.time}</p>
+              <div className="space-y-3">
+                {recentActivity.slice(0, 5).map((activity, index) => {
+                  const getActivityIcon = (type: string) => {
+                    switch (type) {
+                      case 'upload': return '📤';
+                      case 'approval': return '✅';
+                      case 'update': return '🔄';
+                      case 'download': return '📥';
+                      case 'analysis': return '🤖';
+                      case 'verification': return '🔍';
+                      case 'export': return '📊';
+                      default: return '📋';
+                    }
+                  };
+                  
+                  return (
+                    <div key={index} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-secondary/50 transition-colors">
+                      <div className="text-lg mt-0.5">{getActivityIcon(activity.type)}</div>
+                      <div className="flex-1">
+                        <p className="font-medium text-sm">{activity.user}</p>
+                        <p className="text-sm text-muted-foreground">{activity.action}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{activity.time}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Card>
 
@@ -105,21 +132,63 @@ const Admin = () => {
               </div>
               <div className="space-y-4">
                 {[
-                  { service: t("admin.services.apiServer"), status: t("admin.services.operational"), uptime: "99.9%" },
-                  { service: t("admin.services.database"), status: t("admin.services.operational"), uptime: "99.8%" },
-                  { service: t("admin.services.aiAnalysis"), status: t("admin.services.operational"), uptime: "99.7%" },
-                  { service: t("admin.services.fileStorage"), status: t("admin.services.operational"), uptime: "99.9%" },
+                  { service: t("admin.services.apiServer"), status: t("admin.services.operational"), uptime: "99.9%", load: "23%", icon: "🌐" },
+                  { service: t("admin.services.database"), status: t("admin.services.operational"), uptime: "99.8%", load: "45%", icon: "🗄️" },
+                  { service: t("admin.services.aiAnalysis"), status: t("admin.services.operational"), uptime: "99.7%", load: "67%", icon: "🤖" },
+                  { service: t("admin.services.fileStorage"), status: t("admin.services.operational"), uptime: "99.9%", load: "34%", icon: "💾" },
                 ].map((service, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div>
-                      <p className="font-medium text-sm">{service.service}</p>
-                      <p className="text-xs text-muted-foreground">{t("admin.services.uptime")}: {service.uptime}</p>
+                  <div key={index} className="p-3 border rounded-lg hover:shadow-sm transition-shadow">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">{service.icon}</span>
+                        <p className="font-medium text-sm">{service.service}</p>
+                      </div>
+                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">
+                        {service.status}
+                      </span>
                     </div>
-                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">
-                      {service.status}
-                    </span>
+                    <div className="grid grid-cols-2 gap-4 text-xs text-muted-foreground">
+                      <div>
+                        <span>{t("admin.services.uptime")}: </span>
+                        <span className="font-medium">{service.uptime}</span>
+                      </div>
+                      <div>
+                        <span>Load: </span>
+                        <span className="font-medium">{service.load}</span>
+                      </div>
+                    </div>
+                    <div className="mt-2">
+                      <div className="w-full bg-secondary rounded-full h-1.5">
+                        <div 
+                          className="bg-green-500 h-1.5 rounded-full transition-all" 
+                          style={{ width: service.load }}
+                        />
+                      </div>
+                    </div>
                   </div>
                 ))}
+              </div>
+              
+              <div className="mt-6 p-4 bg-secondary/50 rounded-lg">
+                <h4 className="font-semibold text-sm mb-3">System Metrics (Last 24h)</h4>
+                <div className="grid grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <p className="text-muted-foreground">API Requests</p>
+                    <p className="font-bold text-lg">{systemMetrics.apiRequests}</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Analysis Jobs</p>
+                    <p className="font-bold text-lg">{systemMetrics.analysisJobs}</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Avg Response</p>
+                    <p className="font-bold text-lg">{systemMetrics.avgResponseTime}</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Error Rate</p>
+                    <p className="font-bold text-lg text-green-600">{systemMetrics.errorRate}</p>
+                  </div>
+                </div>
               </div>
             </Card>
           </div>

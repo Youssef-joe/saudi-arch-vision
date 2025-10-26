@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { Award, Download, QrCode, CheckCircle, Search } from "lucide-react";
+import { Award, Download, QrCode, CheckCircle, Search, AlertTriangle, TrendingUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const Certificates = () => {
@@ -10,28 +10,64 @@ const Certificates = () => {
 
   const certificates = [
     {
-      id: "CERT-2025-001",
-      projectName: "Residential Complex - Riyadh",
-      issuedDate: "2025-10-20",
-      validUntil: "2030-10-20",
+      id: "SBC-CERT-2025-001",
+      projectName: "Al-Noor Residential Complex - Riyadh",
+      issuedDate: "2025-01-20",
+      validUntil: "2030-01-20",
       compliance: "98%",
       status: "Valid",
+      architect: "Saudi Design Studio",
+      area: "15,000 m²",
+      certType: "Full Compliance",
+      qrCode: "QR-SBC-001-2025",
     },
     {
-      id: "CERT-2025-002",
-      projectName: "Commercial Tower - Jeddah",
-      issuedDate: "2025-10-18",
-      validUntil: "2030-10-18",
+      id: "SBC-CERT-2025-002",
+      projectName: "Kingdom Business Tower - Jeddah",
+      issuedDate: "2025-01-18",
+      validUntil: "2030-01-18",
       compliance: "95%",
       status: "Valid",
+      architect: "Modern Arch Consultants",
+      area: "45,000 m²",
+      certType: "Conditional Approval",
+      qrCode: "QR-SBC-002-2025",
     },
     {
-      id: "CERT-2025-003",
-      projectName: "Villa Project - Dammam",
-      issuedDate: "2025-10-15",
-      validUntil: "2030-10-15",
+      id: "SBC-CERT-2025-003",
+      projectName: "Green Mall Shopping Center - Riyadh",
+      issuedDate: "2025-01-15",
+      validUntil: "2030-01-15",
       compliance: "97%",
       status: "Valid",
+      architect: "Sustainable Architects KSA",
+      area: "32,000 m²",
+      certType: "Full Compliance",
+      qrCode: "QR-SBC-003-2025",
+    },
+    {
+      id: "SBC-CERT-2024-089",
+      projectName: "Heritage Cultural Center - Mecca",
+      issuedDate: "2024-12-10",
+      validUntil: "2029-12-10",
+      compliance: "94%",
+      status: "Valid",
+      architect: "Cultural Heritage Designs",
+      area: "12,000 m²",
+      certType: "Full Compliance",
+      qrCode: "QR-SBC-089-2024",
+    },
+    {
+      id: "SBC-CERT-2024-087",
+      projectName: "Tech Innovation Hub - Riyadh",
+      issuedDate: "2024-11-25",
+      validUntil: "2029-11-25",
+      compliance: "96%",
+      status: "Expiring Soon",
+      architect: "Future Tech Architects",
+      area: "28,000 m²",
+      certType: "Full Compliance",
+      qrCode: "QR-SBC-087-2024",
     },
   ];
 
@@ -86,7 +122,11 @@ const Certificates = () => {
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
                         <h3 className="text-xl font-semibold">{cert.projectName}</h3>
-                        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium flex items-center gap-1">
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${
+                          cert.status === 'Valid' ? 'bg-green-100 text-green-700' :
+                          cert.status === 'Expiring Soon' ? 'bg-orange-100 text-orange-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>
                           <CheckCircle className="h-3 w-3" />
                           {cert.status}
                         </span>
@@ -96,7 +136,7 @@ const Certificates = () => {
                         {t("certificates.certificateId")}: {cert.id}
                       </p>
                       
-                      <div className="grid grid-cols-3 gap-4 pt-2">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
                         <div>
                           <p className="text-xs text-muted-foreground">{t("certificates.issuedDate")}</p>
                           <p className="text-sm font-medium">{cert.issuedDate}</p>
@@ -108,6 +148,20 @@ const Certificates = () => {
                         <div>
                           <p className="text-xs text-muted-foreground">{t("certificates.compliance")}</p>
                           <p className="text-sm font-medium text-accent">{cert.compliance}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground">Certificate Type</p>
+                          <p className="text-sm font-medium">{cert.certType}</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 pt-2 mt-2 border-t border-border/50">
+                        <div>
+                          <p className="text-xs text-muted-foreground">Architect</p>
+                          <p className="text-sm font-medium">{cert.architect}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground">Project Area</p>
+                          <p className="text-sm font-medium">{cert.area}</p>
                         </div>
                       </div>
                     </div>
@@ -129,20 +183,32 @@ const Certificates = () => {
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="p-6 text-center">
-              <p className="text-3xl font-bold text-accent">18</p>
+            <Card className="p-6 text-center hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-center mb-2">
+                <Award className="h-8 w-8 text-accent" />
+              </div>
+              <p className="text-3xl font-bold text-accent">{certificates.length}</p>
               <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.totalIssued")}</p>
             </Card>
-            <Card className="p-6 text-center">
-              <p className="text-3xl font-bold text-green-600">18</p>
+            <Card className="p-6 text-center hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-center mb-2">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+              </div>
+              <p className="text-3xl font-bold text-green-600">{certificates.filter(c => c.status === 'Valid').length}</p>
               <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.valid")}</p>
             </Card>
-            <Card className="p-6 text-center">
-              <p className="text-3xl font-bold text-orange-600">0</p>
+            <Card className="p-6 text-center hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-center mb-2">
+                <AlertTriangle className="h-8 w-8 text-orange-600" />
+              </div>
+              <p className="text-3xl font-bold text-orange-600">{certificates.filter(c => c.status === 'Expiring Soon').length}</p>
               <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.expiringSoon")}</p>
             </Card>
-            <Card className="p-6 text-center">
-              <p className="text-3xl font-bold">5</p>
+            <Card className="p-6 text-center hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-center mb-2">
+                <TrendingUp className="h-8 w-8 text-blue-600" />
+              </div>
+              <p className="text-3xl font-bold text-blue-600">{certificates.filter(c => c.issuedDate.includes('2025-01')).length}</p>
               <p className="text-sm text-muted-foreground mt-1">{t("certificates.stats.thisMonth")}</p>
             </Card>
           </div>
